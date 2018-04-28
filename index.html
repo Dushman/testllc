@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+    <link rel="stylesheet"  href="./css/style.css" media="all">
+</head>
+<body>
+    <header>
+        <button class="btn-left">Left aside</button>
+        <button class="btn-right">Right aside</button>
+    </header>
+    <div class="wrapper">
+        <aside class="aside aside-left"></aside>
+        <div class="content">
+            <main class="main">
+                <div class="main__top-block">page description</div>
+                <div class="inner">
+                    <div class="main__left-block"></div>
+                    <div class="main__right-block"></div>
+                </div>
+            </main>    
+            <footer>footer</footer>
+        </div>    
+        <aside class="aside aside-right"></aside>
+    </div>
+    <div class="test-block">Click for test fixed header and always visible block</div>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(function() {
+        $('body').on('click' , '.btn-left' , function(e){
+            e.preventDefault;
+            $('.aside-left').toggleClass('opened');
+            $('.aside-right').removeClass('opened');
+        });
+        $('body').on('click' , '.btn-right' , function(e){
+            e.preventDefault;
+            $('.aside-right').toggleClass('opened');
+            $('.aside-left').removeClass('opened');
+        });
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 60) {$('body').addClass('fixed');}
+            else {$('body').removeClass('fixed');}
+        });
+        $('body').on('click' , '.test-block' , function(e){
+            e.preventDefault;
+            $('.main__left-block').toggleClass('large');
+        });
+    });
+</script>    
+</body>
+</html>
